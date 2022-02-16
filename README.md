@@ -25,6 +25,9 @@
   ### Database migration (necessary only at the first time)
       yarn migration
   
+### Install dependencies
+    yarn install
+
   ### Development environment app start
     yarn dev
   
