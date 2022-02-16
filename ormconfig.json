@@ -4,11 +4,10 @@
   "port": 3306,
   "username": "user",
   "password": "password",
-  "database": "fruit-bowl",
+  "database": "code-challenge-nodejs",
   "synchronize": false,
   "logging": false,
   "entities": [
-    "src/model/*.ts",
     "src/infra/database/sql/model/*.ts"
   ],
   "migrations": ["migration/*.ts"],

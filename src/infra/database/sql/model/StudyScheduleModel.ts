@@ -7,7 +7,7 @@ import {
 } from "typeorm";
 import CourseModel from "./CourseModel";
 
-@Entity()
+@Entity("study_schedule")
 export default class StudyScheduleModel {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -16,7 +16,7 @@ export default class StudyScheduleModel {
   userId!: string;
 
   @ManyToMany(() => CourseModel)
-  @JoinTable()
+  @JoinTable({name: "study_schedule_courses"})
   courses!: CourseModel[];
 
   constructor(id?: number, userId?: string, courses?: CourseModel[]) {

@@ -1,14 +1,15 @@
 version: '3'
 
 services:
-  mysql:
+  mysql-database:
+    container_name: "mysql-code-challenge-nodejs"
     image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "password"
-      MYSQL_DATABASE: "fruit-bowl"
+      MYSQL_DATABASE: "code-challenge-nodejs"
     ports:
       - "3306:3306"
     expose:
@@ -16,18 +17,16 @@ services:
     networks:
       test:
         ipv4_address: 10.1.0.100
-#    volumes:
-#      - /home/renatogroffe/Desenvolvimento/Docker/Volumes/MySql:/var/lib/mysql
-#    networks:
-#      - mysql-compose-network
 
   adminer:
+    container_name: "adminer-code-challenge-nodejs"
     image: adminer
     restart: always
     ports:
       - 9000:8080
 
   redis:
+    container_name: "redis-code-challenge-nodejs"
     image: redis
     ports:
       - "6379:6379"
