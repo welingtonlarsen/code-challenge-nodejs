@@ -1,6 +1,6 @@
 import StudySchedule from "../../domain/entity/StudySchedule";
 import StudyScheduleRepository from "../../domain/repository/StudyScheduleRepository";
-import CourseNamesSequenceResolver from "../../domain/service/CourseNamesSequenceResolver";
+import CourseSequenceResolver from "../../domain/service/CourseNamesSequenceResolver";
 import CoursesDto from "../dto/request/CoursesDto";
 import DesiredMicroCoursesDto from "../dto/request/DesiredMicroCoursesDto";
 
@@ -10,9 +10,9 @@ export default class CreateStudySchedule {
   async execute(
     desiredMicroCoursesDto: DesiredMicroCoursesDto
   ): Promise<StudySchedule> {
-    const courseNamesSequence = CourseNamesSequenceResolver.getSequence();
+    const courseSequence = CourseSequenceResolver.getSequence();
 
-    const orderedCoursesToStudy: string[] = courseNamesSequence
+    const orderedCoursesToStudy: string[] = courseSequence
       .map((courseName: string) =>
         this.getCourseNameIfIsDesiredOrReturnEmpty(
           desiredMicroCoursesDto.courses,

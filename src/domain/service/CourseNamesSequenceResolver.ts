@@ -1,4 +1,4 @@
-export default class CourseNamesSequenceResolver {
+export default class CourseSequenceResolver {
   static getSequence(): string[] {
     return [
       "Finance",
