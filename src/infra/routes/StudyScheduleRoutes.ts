@@ -15,8 +15,8 @@ studyScheduleRoute.post(
     );
 
     return studySchedule.responseBody == undefined
-      ? response.status(400).json({ errors: studySchedule })
-      : response.status(201).json(instanceToPlain(studySchedule));
+      ? response.status(400).json({ errors: studySchedule.errors })
+      : response.status(201).json(instanceToPlain(studySchedule.responseBody));
   }
 );
 
