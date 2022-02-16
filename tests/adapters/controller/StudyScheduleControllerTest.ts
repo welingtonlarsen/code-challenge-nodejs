@@ -9,8 +9,7 @@ import DesiredMicroCoursesDto from "../../../src/application/dto/request/Desired
 import CreateStudySchedule from "../../../src/application/usecase/CreateStudySchedule";
 import StudySchedule from "../../../src/domain/entity/StudySchedule";
 
-describe("Study schedule controller test", () => {
-  // Prepare
+const getStudyScheduleControllerWithStubs = (): StudyScheduleController => {
   const useCaseStub = stubInterface<CreateStudySchedule>();
   useCaseStub.execute.returns(
     new Promise((resolve) =>
@@ -29,7 +28,11 @@ describe("Study schedule controller test", () => {
   const factoryStub = stubInterface<CreateStudyScheduleFactory>();
   factoryStub.create.returns(useCaseStub);
 
-  const studyScheduleController = new StudyScheduleController(factoryStub);
+  return new StudyScheduleController(factoryStub);
+}
+
+describe("Study schedule controller test", () => {
+  const studyScheduleController = getStudyScheduleControllerWithStubs()
 
   it("Should create success response containing a study schedule", async () => {
     // given

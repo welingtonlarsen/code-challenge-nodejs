@@ -1,6 +1,5 @@
 import { expect } from "chai";
 import { describe } from "mocha";
-import sinon from "sinon";
 import { stubInterface } from "ts-sinon";
 import CoursesDto from "../../../src/application/dto/request/CoursesDto";
 import DesiredMicroCoursesDto from "../../../src/application/dto/request/DesiredMicroCoursesDto";
@@ -8,8 +7,7 @@ import CreateStudySchedule from "../../../src/application/usecase/CreateStudySch
 import StudySchedule from "../../../src/domain/entity/StudySchedule";
 import StudyScheduleRepository from "../../../src/domain/repository/StudyScheduleRepository";
 
-describe("Create study schedule test", () => {
-  // Prepare
+const getCreateStudyScheduleUseCaseWithStubs = (): CreateStudySchedule => {
   const repositoryStub = stubInterface<StudyScheduleRepository>();
   repositoryStub.save.returns(
     new Promise((resolve) =>
@@ -24,7 +22,11 @@ describe("Create study schedule test", () => {
       )
     )
   );
-  const createStudyScheduleUseCase = new CreateStudySchedule(repositoryStub);
+  return new CreateStudySchedule(repositoryStub);
+};
+
+describe("Create study schedule test", () => {
+  const createStudyScheduleUseCase = getCreateStudyScheduleUseCaseWithStubs();
 
   it("Shoud create study schedule", async () => {
     // given

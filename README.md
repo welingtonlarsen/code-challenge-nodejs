@@ -31,7 +31,7 @@
   ### Development environment app start
     yarn dev
   
-  ### Run unit tests
+  ### Run unit tests (with reports in console)
     yarn test
 
 ## Examples
