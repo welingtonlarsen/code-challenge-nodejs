@@ -14,6 +14,9 @@
 ![](https://img.shields.io/badge/Cache-Redis-brightgreen)
 </div> 
 
+## Description
+The challenge aim is to create a backend REST service that will receive the list of desired courses by a student in JSON format. The payload is not organized in any specific order. Your service must create a study schedule ensuring that the student will take the courses in an order that respects the constraints. An additional rule is that the proposed study schedule must be stored in an SQL database.
+
 ## Local prerequisites
 - Node.js (16.14.0 is recommended)
 - Docker
